@@ -1,0 +1,16 @@
+import FileSaver from 'file-saver';
+import { surpriseMePrompts } from '../constants/index';
+
+export function getRandomPrompt(prompt) {
+  const randomIndex = Math.floor(Math.random() * surpriseMePrompts.length);
+  const randomPrompt = surpriseMePrompts[randomIndex];
+  //avoid getting same prompt twice
+
+  if (randomPrompt === prompt) return getRandomPrompt(prompt);
+
+  return randomPrompt;
+}
+//for downloading image
+export async function downloadImage(_id, photo) {
+  FileSaver.saveAs(photo, `download-${_id}.jpg`);
+}
