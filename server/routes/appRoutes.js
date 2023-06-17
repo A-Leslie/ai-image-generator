@@ -1,6 +1,7 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const { Configuration, OpenAIApi } = require('openai');
+const  express =require('express') ;
+const dotenv =require('dotenv');
+const { Configuration, OpenAIApi } =require('openai') ;
+
 dotenv.config();
 
 const router = express.Router();
@@ -34,4 +35,4 @@ router.route('/').post(async (req, res) => {
   }
 });
 
-module.exports= router;
+module.exports = router;

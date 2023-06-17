@@ -1,9 +1,10 @@
 const express = require('express')
 const dotenv = require('dotenv')
 const cors = require('cors')
-const connectDB = require('./db/dbconn')
+const connectDB= require('./db/dbconn')
 const postRoutes = require('./routes/postRoutes')
 const appRoutes= require('./routes/appRoutes.js')
+ 
 
 //pull env variables
 dotenv.config();

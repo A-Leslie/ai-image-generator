@@ -1,19 +1,21 @@
-const express = require('express');
-const dotenv = require('dotenv');
-const v2= require('cloudinary');
-const cloudinary=v2;
+const express =require('express') ;
+const dotenv= require( 'dotenv');
+let  v2=require('cloudinary');
+const cloudinary=v2
+const app = express
+
 const Post =require('../db/models/post.js') ;
 
 dotenv.config();
 
 const router = express.Router();
-//setting up cloudinary
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
-// getting all posts
+
 router.route('/').get(async (req, res) => {
   try {
     const posts = await Post.find({});
@@ -22,7 +24,7 @@ router.route('/').get(async (req, res) => {
     res.status(500).json({ success: false, message: 'Fetching posts failed, please try again' });
   }
 });
-//create a post
+
 router.route('/').post(async (req, res) => {
   try {
     const { name, prompt, photo } = req.body;
@@ -40,5 +42,4 @@ router.route('/').post(async (req, res) => {
   }
 });
 
-
-module.exports= router;
+module.exports =router;
